@@ -37,13 +37,13 @@
         /* Light/Modern Theme */
         body.theme-modern {
             --accent-color: #6366F1;
-            --bg-color: #FAFAFA;
+            --bg-color: #F5F5F7;
             --text-color: #1F2937;
             --text-muted: #6B7280;
             --heading-color: #111827;
-            --card-bg: rgba(255, 255, 255, 0.15);
-            --card-border: rgba(255, 255, 255, 0.3);
-            --glass-bg: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.25);
+            --card-border: rgba(255, 255, 255, 0.45);
+            --glass-bg: rgba(255, 255, 255, 0.2);
             --gradient-start: rgba(99, 102, 241, 0.08);
             --gradient-end: rgba(168, 85, 247, 0.05);
             --dot-pattern: transparent;
@@ -54,58 +54,126 @@
             --profile-border: rgba(255, 255, 255, 0.5);
             --footer-border: rgba(0, 0, 0, 0.05);
             --text-highlight-bg: linear-gradient(120deg, #6366F1, #A855F7);
-            --backdrop-blur: 16px;
-            --card-hover-bg: rgba(255, 255, 255, 0.25);
+            --backdrop-blur: 20px;
+            --card-hover-bg: rgba(255, 255, 255, 0.35);
             --theme-icon-color: #1F2937;
         }
 
-        /* Modern theme specific background */
+        /* Modern theme background with visible elements for blur effect */
         body.theme-modern {
-            background-image:
-                radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.15), transparent 40%),
-                radial-gradient(ellipse at bottom right, rgba(168, 85, 247, 0.12), transparent 40%),
-                radial-gradient(circle at center, rgba(236, 72, 153, 0.05), transparent 60%);
-            background-size: 100% 100%;
-            background-attachment: fixed;
+            background: 
+                linear-gradient(135deg, #F5F5F7 0%, #FAFAFA 100%);
+            position: relative;
         }
 
-        /* Modern theme subtle floating orbs */
-        body.theme-modern::before,
+        /* Gradient mesh background for light theme */
+        body.theme-modern::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.25) 0%, transparent 25%),
+                radial-gradient(circle at 75% 40%, rgba(168, 85, 247, 0.2) 0%, transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 15% 70%, rgba(251, 146, 60, 0.1) 0%, transparent 25%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Geometric shapes for light theme */
         body.theme-modern::after {
             content: '';
             position: fixed;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.3;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(99, 102, 241, 0.03) 100px,
+                    rgba(99, 102, 241, 0.03) 200px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(168, 85, 247, 0.03) 100px,
+                    rgba(168, 85, 247, 0.03) 200px
+                );
             pointer-events: none;
-            animation: float 25s infinite ease-in-out;
+            z-index: 0;
         }
 
-        body.theme-modern::before {
+        /* Additional floating elements for depth */
+        .theme-modern .bg-shape {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: morphing 20s ease-in-out infinite;
+        }
+
+        .theme-modern .bg-shape-1 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.2));
+            top: -300px;
+            left: -300px;
+            filter: blur(40px);
+        }
+
+        .theme-modern .bg-shape-2 {
             width: 500px;
             height: 500px;
-            background: linear-gradient(135deg, #E0E7FF 0%, #C7D2FE 100%);
-            top: -250px;
-            left: -250px;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(251, 146, 60, 0.15));
+            bottom: -250px;
+            right: -250px;
+            filter: blur(40px);
+            animation-delay: -10s;
         }
 
-        body.theme-modern::after {
+        .theme-modern .bg-shape-3 {
             width: 400px;
             height: 400px;
-            background: linear-gradient(135deg, #FDE1F3 0%, #E9D5FF 100%);
-            bottom: -200px;
-            right: -200px;
-            animation-delay: -12s;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(59, 130, 246, 0.2));
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(60px);
+            animation-delay: -5s;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(30px, -30px) scale(1.05); }
-            50% { transform: translate(-20px, 20px) scale(0.95); }
-            75% { transform: translate(20px, 30px) scale(1.02); }
+        @keyframes morphing {
+            0%, 100% { 
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+                transform: rotate(0deg) scale(1);
+            }
+            25% { 
+                border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+                transform: rotate(90deg) scale(1.1);
+            }
+            50% { 
+                border-radius: 40% 60% 60% 40% / 70% 30% 40% 60%;
+                transform: rotate(180deg) scale(0.95);
+            }
+            75% { 
+                border-radius: 70% 30% 50% 50% / 30% 70% 40% 60%;
+                transform: rotate(270deg) scale(1.05);
+            }
         }
 
         /* Base Styles */
+        * {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: var(--font-body);
             background-color: var(--bg-color);
@@ -117,6 +185,12 @@
             background-size: 100% 100%, 100% 100%, 1.2rem 1.2rem;
             transition: all 0.3s ease;
             position: relative;
+        }
+
+        /* Ensure content is above background elements */
+        body > * {
+            position: relative;
+            z-index: 1;
         }
 
         h1, h2, h3 {
@@ -148,7 +222,7 @@
         }
 
         .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
             font-weight: 700;
             color: var(--heading-color);
             display: inline-block;
@@ -162,7 +236,7 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -8px;
+            bottom: -6px;
             left: 50%;
             transform: translateX(-50%);
             width: 60%;
@@ -186,13 +260,13 @@
         }
 
         body.theme-modern .glass-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(24px) saturate(150%);
-            -webkit-backdrop-filter: blur(24px) saturate(150%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(30px) saturate(120%);
+            -webkit-backdrop-filter: blur(30px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 
-                0 8px 32px 0 rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+                0 8px 32px 0 rgba(0, 0, 0, 0.08),
+                inset 0 2px 0 0 rgba(255, 255, 255, 0.5);
         }
 
         .project-card {
@@ -204,13 +278,13 @@
         }
 
         body.theme-modern .project-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px) saturate(140%);
-            -webkit-backdrop-filter: blur(20px) saturate(140%);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(25px) saturate(120%);
+            -webkit-backdrop-filter: blur(25px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.35);
             box-shadow: 
-                0 4px 24px 0 rgba(0, 0, 0, 0.02),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+                0 4px 24px 0 rgba(0, 0, 0, 0.04),
+                inset 0 2px 0 0 rgba(255, 255, 255, 0.4);
         }
 
         .project-card:hover {
@@ -221,11 +295,11 @@
 
         body.theme-modern .project-card:hover {
             transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.3);
             box-shadow: 
-                0 12px 48px 0 rgba(0, 0, 0, 0.06),
+                0 12px 48px 0 rgba(0, 0, 0, 0.1),
                 var(--shadow-accent),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+                inset 0 2px 0 0 rgba(255, 255, 255, 0.6);
         }
 
         .project-icon {
@@ -240,11 +314,12 @@
         }
 
         .project-card:hover .project-icon {
-            transform: scale(1.2) rotate(-5deg);
+            transform: scale(1.15) rotate(-5deg);
         }
 
         .project-arrow {
             transition: transform 0.3s ease, color 0.3s ease;
+            color: var(--text-muted);
         }
 
         .project-card:hover .project-arrow {
@@ -254,6 +329,8 @@
 
         .profile-image {
             background-image: url('images/avatar.png');
+            background-size: cover;
+            background-position: center;
             border-color: var(--profile-border);
         }
 
@@ -264,8 +341,20 @@
                 0 0 0 1px rgba(255, 255, 255, 0.6);
         }
 
-        /* Text highlights in modern theme */
-        body.theme-modern .border-b-2 {
+        /* Text highlights */
+        .text-highlight {
+            font-medium: 500;
+            border-bottom: 2px solid;
+            border-color: var(--accent-color);
+            padding-bottom: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .text-highlight:hover {
+            color: var(--accent-color);
+        }
+
+        body.theme-modern .text-highlight {
             border-image: var(--text-highlight-bg) 1;
             border-width: 2px;
         }
@@ -292,22 +381,23 @@
         }
 
         body.theme-modern .theme-toggle {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.35);
             box-shadow: 
-                0 4px 24px 0 rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(20px) saturate(140%);
-            -webkit-backdrop-filter: blur(20px) saturate(140%);
+                0 4px 24px 0 rgba(0, 0, 0, 0.06),
+                inset 0 2px 0 0 rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(25px) saturate(120%);
+            -webkit-backdrop-filter: blur(25px) saturate(120%);
         }
 
         .theme-toggle:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(10deg);
             box-shadow: 0 0 20px var(--accent-color);
         }
 
         .theme-toggle span {
             color: var(--theme-icon-color);
+            transition: transform 0.3s ease;
         }
 
         /* Explorer's Wake Trail */
@@ -348,13 +438,33 @@
         }
 
         body.theme-modern footer {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .glass-card {
+                padding: 2rem;
+            }
+            
+            .project-card {
+                padding: 1.75rem;
+            }
         }
     </style>
 </head>
 <body class="antialiased">
+    <!-- Background shapes for light theme -->
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+    <div class="bg-shape bg-shape-3"></div>
+
     <!-- Theme Toggle Button -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
         <span class="material-symbols-outlined">palette</span>
@@ -363,31 +473,31 @@
     <!-- Main Container -->
     <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
         <main class="flex h-full grow flex-col items-center">
-            <div class="w-full max-w-6xl px-6 py-24 sm:py-32">
-                <div class="flex flex-col gap-28 md:gap-36">
+            <div class="w-full max-w-6xl px-6 py-20 sm:py-28">
+                <div class="flex flex-col gap-24 md:gap-32">
 
                     <!-- Header Section -->
                     <header class="flex flex-col md:flex-row items-center justify-center gap-12 text-center md:text-left relative">
                         <div class="relative">
-                            <div class="profile-image size-52 rounded-full bg-[#2a2a2a] border-4 shadow-2xl bg-cover bg-center"></div>
+                            <div class="profile-image size-48 md:size-52 rounded-full bg-[#2a2a2a] border-4 shadow-2xl"></div>
                         </div>
                         <div class="flex flex-col gap-4">
-                            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter">Anirudh Gupta</h1>
-                            <p class="text-3xl md:text-4xl accent-text font-['Playfair_Display'] italic">Digital Explorer.</p>
-                            <p class="text-lg md:text-xl max-w-xl mt-4 font-light">
+                            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter">Anirudh Gupta</h1>
+                            <p class="text-2xl md:text-3xl lg:text-4xl accent-text font-['Playfair_Display'] italic">Digital Explorer.</p>
+                            <p class="text-base md:text-lg lg:text-xl max-w-xl mt-3 font-light">
                                 Seeking the elegant architecture in
-                                <span class="font-medium border-b-2 border-[var(--accent-color)] pb-1">code</span>
+                                <span class="text-highlight">code</span>
                                 and in the
-                                <span class="font-medium border-b-2 border-[var(--accent-color)] pb-1">cosmos.</span>
+                                <span class="text-highlight">cosmos.</span>
                             </p>
                         </div>
                     </header>
 
                     <!-- Mission Section -->
-                    <section class="relative flex flex-col items-center gap-12">
-                        <div class="text-center max-w-3xl p-10 glass-card">
-                            <h2 class="section-title">The <span class="accent-text">Mission</span></h2>
-                            <p class="text-xl md:text-2xl leading-relaxed font-light mt-10">
+                    <section class="relative flex flex-col items-center gap-10">
+                        <div class="text-center max-w-3xl p-8 md:p-10 glass-card">
+                            <h2 class="section-title mb-8">The <span class="accent-text">Mission</span></h2>
+                            <p class="text-lg md:text-xl leading-relaxed font-light">
                                 For me, the world is a collection of systems, each with its own architecture. My goal is to comprehend these blueprints, from the foundational logic of the
                                 <strong class="font-semibold">Linux kernel</strong> to the physical principles that govern
                                 <strong class="font-semibold">flight.</strong>
@@ -397,37 +507,37 @@
                     </section>
 
                     <!-- Workshop Section -->
-                    <section class="flex flex-col items-center gap-12 w-full">
-                        <div class="text-center mb-4">
+                    <section class="flex flex-col items-center gap-10 w-full">
+                        <div class="text-center">
                             <h2 class="section-title">The <span class="accent-text">Workshop</span></h2>
                         </div>
-                        <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            <a href="#" class="project-card flex flex-col items-center text-center gap-4 p-8 rounded-2xl">
-                                <span class="material-symbols-outlined text-6xl project-icon">memory</span>
-                                <h3 class="text-2xl font-semibold mt-2">System Architect</h3>
-                                <p class="font-light flex-grow opacity-80">A study of system architecture, package management, and performance tuning through Arch Linux.</p>
-                                <span class="material-symbols-outlined text-white/50 mt-auto project-arrow">arrow_forward</span>
+                        <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                            <a href="#" class="project-card flex flex-col items-center text-center gap-3 p-6 md:p-8 rounded-2xl group">
+                                <span class="material-symbols-outlined text-5xl project-icon">memory</span>
+                                <h3 class="text-xl font-semibold mt-1">System Architect</h3>
+                                <p class="text-sm font-light flex-grow opacity-75">A study of system architecture, package management, and performance tuning through Arch Linux.</p>
+                                <span class="material-symbols-outlined mt-auto project-arrow">arrow_forward</span>
                             </a>
-                            <a href="#" class="project-card flex flex-col items-center text-center gap-4 p-8 rounded-2xl">
-                                <span class="material-symbols-outlined text-6xl project-icon">tune</span>
-                                <h3 class="text-2xl font-semibold mt-2">Unlocking Potential</h3>
-                                <p class="font-light flex-grow opacity-80">Unlocking bootloaders, flashing custom ROMs, and modifying system partitions on Android devices.</p>
-                                <span class="material-symbols-outlined text-white/50 mt-auto project-arrow">arrow_forward</span>
+                            <a href="#" class="project-card flex flex-col items-center text-center gap-3 p-6 md:p-8 rounded-2xl group">
+                                <span class="material-symbols-outlined text-5xl project-icon">tune</span>
+                                <h3 class="text-xl font-semibold mt-1">Unlocking Potential</h3>
+                                <p class="text-sm font-light flex-grow opacity-75">Unlocking bootloaders, flashing custom ROMs, and modifying system partitions on Android devices.</p>
+                                <span class="material-symbols-outlined mt-auto project-arrow">arrow_forward</span>
                             </a>
-                            <a href="#" class="project-card flex flex-col items-center text-center gap-4 p-8 rounded-2xl">
-                                <span class="material-symbols-outlined text-6xl project-icon">auto_awesome</span>
-                                <h3 class="text-2xl font-semibold mt-2">Creative Co-pilot</h3>
-                                <p class="font-light flex-grow opacity-80">Leveraging large language models for prompt-driven development and custom tool creation.</p>
-                                <span class="material-symbols-outlined text-white/50 mt-auto project-arrow">arrow_forward</span>
+                            <a href="#" class="project-card flex flex-col items-center text-center gap-3 p-6 md:p-8 rounded-2xl group">
+                                <span class="material-symbols-outlined text-5xl project-icon">auto_awesome</span>
+                                <h3 class="text-xl font-semibold mt-1">Creative Co-pilot</h3>
+                                <p class="text-sm font-light flex-grow opacity-75">Leveraging large language models for prompt-driven development and custom tool creation.</p>
+                                <span class="material-symbols-outlined mt-auto project-arrow">arrow_forward</span>
                             </a>
                         </div>
                     </section>
 
                     <!-- Off the Clock Section -->
-                    <section class="relative flex flex-col items-center gap-12">
-                        <div class="w-full text-center max-w-3xl p-10 glass-card">
-                            <h2 class="section-title">Off the <span class="accent-text">Clock</span></h2>
-                            <p class="text-lg md:text-xl leading-relaxed font-light mt-10">
+                    <section class="relative flex flex-col items-center gap-10">
+                        <div class="w-full text-center max-w-3xl p-8 md:p-10 glass-card">
+                            <h2 class="section-title mb-8">Off the <span class="accent-text">Clock</span></h2>
+                            <p class="text-base md:text-lg leading-relaxed font-light">
                                 My curiosity for systems doesn't power down. I find the same joy in designing redstone circuits in Minecraft—a sandbox for digital logic—as I do in studying the elegant interplay of physics and engineering that defines aviation. For me, it's all about appreciating a beautifully designed structure, whether it's made of code, blocks, or wings.
                             </p>
                         </div>
@@ -437,9 +547,9 @@
         </main>
 
         <!-- Footer -->
-        <footer class="w-full text-center p-8 font-light border-t mt-16">
+        <footer class="w-full text-center px-6 py-8 font-light border-t mt-12">
             <p>© 2025 Anirudh Gupta. Crafted with curiosity.</p>
-            <p class="text-sm mt-2 opacity-70">Human-Directed, AI-Developed</p>
+            <p class="text-xs md:text-sm mt-2 opacity-60">Human-Directed, AI-Developed</p>
         </footer>
     </div>
 
@@ -449,14 +559,33 @@
             document.body.classList.toggle('theme-modern');
             const isModern = document.body.classList.contains('theme-modern');
             localStorage.setItem('theme', isModern ? 'modern' : 'dark');
+            
+            // Toggle background shapes visibility
+            document.querySelectorAll('.bg-shape').forEach(shape => {
+                shape.style.display = isModern ? 'block' : 'none';
+            });
         }
 
         // Load saved theme preference
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'modern') {
+            const isModern = savedTheme === 'modern';
+            
+            if (isModern) {
                 document.body.classList.add('theme-modern');
             }
+            
+            // Set initial visibility of background shapes
+            document.querySelectorAll('.bg-shape').forEach(shape => {
+                shape.style.display = isModern ? 'block' : 'none';
+            });
+
+            // Fade in animation on load
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
         });
 
         // Explorer's Wake Trail
@@ -496,30 +625,39 @@
             }, 1500);
         }
 
-        // --- Consolidated Project Card Manager ---
+        // Project Card Manager
         document.querySelectorAll('.project-card').forEach(card => {
-            // 1. Handle the hover-on (mouseenter) for the glow effect
+            // Handle hover for glow effect
             card.addEventListener('mouseenter', () => {
                 const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color');
                 const isModern = document.body.classList.contains('theme-modern');
                 
                 if (isModern) {
-                    card.style.boxShadow = `0 12px 48px 0 rgba(0, 0, 0, 0.06), 0 0 20px ${accentColor}26, inset 0 1px 0 0 rgba(255, 255, 255, 0.5)`;
+                    card.style.boxShadow = `0 12px 48px 0 rgba(0, 0, 0, 0.1), 0 0 20px ${accentColor}26, inset 0 2px 0 0 rgba(255, 255, 255, 0.6)`;
                 } else {
                     card.style.boxShadow = `0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px ${accentColor}40`;
                 }
             });
 
-            // 2. Handle the hover-off (mouseleave) to remove the glow
             card.addEventListener('mouseleave', () => {
                 card.style.boxShadow = '';
             });
 
-            // 3. Handle the click to prevent the page from refreshing
+            // Prevent default navigation
             card.addEventListener('click', (event) => {
                 event.preventDefault();
-                console.log("Project card clicked. Navigation prevented for now.");
-                // In the future, this is where you could trigger a pop-up modal
+                // Future: Add modal or navigation logic here
+            });
+        });
+
+        // Performance optimization: Debounce scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) {
+                window.cancelAnimationFrame(scrollTimeout);
+            }
+            scrollTimeout = window.requestAnimationFrame(() => {
+                // Future scroll-based animations can go here
             });
         });
     </script>
