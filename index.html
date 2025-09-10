@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Explorer - Anirudh Gupta</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
     <style>
@@ -26,83 +26,11 @@
             --font-body: 'Poppins', sans-serif;
             --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             --shadow-accent: 0 0 15px rgba(138, 43, 226, 0.4);
-            --profile-border: rgba(255, 255, 255, 0.1);
-            --footer-border: rgba(255, 255, 255, 0.1);
-            --text-highlight-bg: var(--accent-color);
-            --backdrop-blur: 10px;
-            --card-hover-bg: rgba(26, 26, 26, 0.5);
-            --theme-icon-color: #FFFFFF;
         }
 
-        /* Light/Modern Theme */
+        /* Future Theme Placeholder */
         body.theme-modern {
-            --accent-color: #6366F1;
-            --bg-color: #FAFAFA;
-            --text-color: #1F2937;
-            --text-muted: #6B7280;
-            --heading-color: #111827;
-            --card-bg: rgba(255, 255, 255, 0.15);
-            --card-border: rgba(255, 255, 255, 0.3);
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --gradient-start: rgba(99, 102, 241, 0.08);
-            --gradient-end: rgba(168, 85, 247, 0.05);
-            --dot-pattern: transparent;
-            --font-heading: 'Inter', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --shadow-card: 0 10px 40px -10px rgba(0, 0, 0, 0.04);
-            --shadow-accent: 0 0 20px rgba(99, 102, 241, 0.15);
-            --profile-border: rgba(255, 255, 255, 0.5);
-            --footer-border: rgba(0, 0, 0, 0.05);
-            --text-highlight-bg: linear-gradient(120deg, #6366F1, #A855F7);
-            --backdrop-blur: 16px;
-            --card-hover-bg: rgba(255, 255, 255, 0.25);
-            --theme-icon-color: #1F2937;
-        }
-
-        /* Modern theme specific background */
-        body.theme-modern {
-            background-image:
-                radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.15), transparent 40%),
-                radial-gradient(ellipse at bottom right, rgba(168, 85, 247, 0.12), transparent 40%),
-                radial-gradient(circle at center, rgba(236, 72, 153, 0.05), transparent 60%);
-            background-size: 100% 100%;
-            background-attachment: fixed;
-        }
-
-        /* Modern theme subtle floating orbs */
-        body.theme-modern::before,
-        body.theme-modern::after {
-            content: '';
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.3;
-            pointer-events: none;
-            animation: float 25s infinite ease-in-out;
-        }
-
-        body.theme-modern::before {
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, #E0E7FF 0%, #C7D2FE 100%);
-            top: -250px;
-            left: -250px;
-        }
-
-        body.theme-modern::after {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, #FDE1F3 0%, #E9D5FF 100%);
-            bottom: -200px;
-            right: -200px;
-            animation-delay: -12s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(30px, -30px) scale(1.05); }
-            50% { transform: translate(-20px, 20px) scale(0.95); }
-            75% { transform: translate(20px, 30px) scale(1.02); }
+            /* Future theme styles will be added here */
         }
 
         /* Base Styles */
@@ -116,30 +44,11 @@
                 radial-gradient(circle at 1px 1px, var(--dot-pattern) 1px, transparent 0);
             background-size: 100% 100%, 100% 100%, 1.2rem 1.2rem;
             transition: all 0.3s ease;
-            position: relative;
         }
 
         h1, h2, h3 {
             font-family: var(--font-heading);
             color: var(--heading-color);
-        }
-
-        /* Modern theme typography adjustments */
-        body.theme-modern h1 {
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, #1F2937 0%, #374151 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        body.theme-modern .accent-text {
-            background: var(--text-highlight-bg);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 600;
         }
 
         /* Custom Classes */
@@ -155,10 +64,6 @@
             position: relative;
         }
 
-        body.theme-modern .section-title {
-            font-weight: 800;
-        }
-
         .section-title::after {
             content: '';
             position: absolute;
@@ -171,28 +76,13 @@
             border-radius: 2px;
         }
 
-        body.theme-modern .section-title::after {
-            background: var(--text-highlight-bg);
-            height: 3px;
-        }
-
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(var(--backdrop-blur));
-            -webkit-backdrop-filter: blur(var(--backdrop-blur));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
             border-radius: 1rem;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        body.theme-modern .glass-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(24px) saturate(150%);
-            -webkit-backdrop-filter: blur(24px) saturate(150%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow:
-                0 8px 32px 0 rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
         }
 
         .project-card {
@@ -203,40 +93,16 @@
             overflow: hidden;
         }
 
-        body.theme-modern .project-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px) saturate(140%);
-            -webkit-backdrop-filter: blur(20px) saturate(140%);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow:
-                0 4px 24px 0 rgba(0, 0, 0, 0.02),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-        }
-
         .project-card:hover {
             transform: translateY(-8px);
-            background-color: var(--card-hover-bg);
+            background-color: rgba(26, 26, 26, 0.5);
             box-shadow: var(--shadow-card), var(--shadow-accent);
-        }
-
-        body.theme-modern .project-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow:
-                0 12px 48px 0 rgba(0, 0, 0, 0.06),
-                var(--shadow-accent),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
         }
 
         .project-icon {
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             color: var(--accent-color);
             opacity: 0.8;
-        }
-
-        body.theme-modern .project-icon {
-            opacity: 0.9;
-            color: #6366F1;
         }
 
         .project-card:hover .project-icon {
@@ -254,20 +120,6 @@
 
         .profile-image {
             background-image: url('images/avatar.png');
-            border-color: var(--profile-border);
-        }
-
-        body.theme-modern .profile-image {
-            border: 4px solid rgba(255, 255, 255, 0.4);
-            box-shadow:
-                0 10px 40px 0 rgba(0, 0, 0, 0.05),
-                0 0 0 1px rgba(255, 255, 255, 0.6);
-        }
-
-        /* Text highlights in modern theme */
-        body.theme-modern .border-b-2 {
-            border-image: var(--text-highlight-bg) 1;
-            border-width: 2px;
         }
 
         /* Theme Toggle Button */
@@ -287,27 +139,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        body.theme-modern .theme-toggle {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow:
-                0 4px 24px 0 rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(20px) saturate(140%);
-            -webkit-backdrop-filter: blur(20px) saturate(140%);
         }
 
         .theme-toggle:hover {
             transform: scale(1.1);
             box-shadow: 0 0 20px var(--accent-color);
-        }
-
-        .theme-toggle span {
-            color: var(--theme-icon-color);
         }
 
         /* Explorer's Wake Trail */
@@ -323,14 +159,6 @@
             z-index: 999;
         }
 
-        body.theme-modern .particle {
-            width: 4px;
-            height: 4px;
-            background: #6366F1;
-            opacity: 0.6;
-            box-shadow: 0 0 6px rgba(99, 102, 241, 0.3);
-        }
-
         @keyframes particleFade {
             0% {
                 transform: scale(1) translate(0, 0);
@@ -341,23 +169,12 @@
                 opacity: 0;
             }
         }
-
-        /* Footer adjustments */
-        footer {
-            border-top-color: var(--footer-border);
-        }
-
-        body.theme-modern footer {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
     </style>
 </head>
 <body class="antialiased">
     <!-- Theme Toggle Button -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <span class="material-symbols-outlined">palette</span>
+        <span class="material-symbols-outlined text-white">palette</span>
     </button>
 
     <!-- Main Container -->
@@ -369,16 +186,16 @@
                     <!-- Header Section -->
                     <header class="flex flex-col md:flex-row items-center justify-center gap-12 text-center md:text-left relative">
                         <div class="relative">
-                            <div class="profile-image size-52 rounded-full bg-[#2a2a2a] border-4 shadow-2xl bg-cover bg-center"></div>
+                            <div class="profile-image size-52 rounded-full bg-[#2a2a2a] border-4 border-white/10 shadow-2xl bg-cover bg-center"></div>
                         </div>
                         <div class="flex flex-col gap-4">
-                            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter">Anirudh Gupta</h1>
+                            <h1 class="text-6xl md:text-8xl font-bold text-white tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">Anirudh Gupta</h1>
                             <p class="text-3xl md:text-4xl accent-text font-['Playfair_Display'] italic">Digital Explorer.</p>
-                            <p class="text-lg md:text-xl max-w-xl mt-4 font-light">
+                            <p class="text-lg md:text-xl max-w-xl mt-4 font-light text-gray-300">
                                 Seeking the elegant architecture in
-                                <span class="font-medium border-b-2 border-[var(--accent-color)] pb-1">code</span>
+                                <span class="font-medium text-white border-b-2 border-[var(--accent-color)] pb-1">code</span>
                                 and in the
-                                <span class="font-medium border-b-2 border-[var(--accent-color)] pb-1">cosmos.</span>
+                                <span class="font-medium text-white border-b-2 border-[var(--accent-color)] pb-1">cosmos.</span>
                             </p>
                         </div>
                     </header>
@@ -389,8 +206,8 @@
                             <h2 class="section-title">The <span class="accent-text">Mission</span></h2>
                             <p class="text-xl md:text-2xl leading-relaxed font-light mt-10">
                                 For me, the world is a collection of systems, each with its own architecture. My goal is to comprehend these blueprints, from the foundational logic of the
-                                <strong class="font-semibold">Linux kernel</strong> to the physical principles that govern
-                                <strong class="font-semibold">flight.</strong>
+                                <strong class="font-semibold text-white">Linux kernel</strong> to the physical principles that govern
+                                <strong class="font-semibold text-white">flight.</strong>
                                 It's in understanding these core structures that true mastery is found.
                             </p>
                         </div>
@@ -404,20 +221,20 @@
                         <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             <a href="#" class="project-card flex flex-col items-center text-center gap-4 p-8 rounded-2xl">
                                 <span class="material-symbols-outlined text-6xl project-icon">memory</span>
-                                <h3 class="text-2xl font-semibold mt-2">System Architect</h3>
-                                <p class="font-light flex-grow opacity-80">A study of system architecture, package management, and performance tuning through Arch Linux.</p>
+                                <h3 class="text-white text-2xl font-semibold mt-2">System Architect</h3>
+                                <p class="text-gray-400 font-light flex-grow">A study of system architecture, package management, and performance tuning through Arch Linux.</p>
                                 <span class="material-symbols-outlined text-white/50 mt-auto project-arrow">arrow_forward</span>
                             </a>
                             <a href="#" class="project-card flex flex-col items-center text-center gap-4 p-8 rounded-2xl">
                                 <span class="material-symbols-outlined text-6xl project-icon">tune</span>
-                                <h3 class="text-2xl font-semibold mt-2">Unlocking Potential</h3>
-                                <p class="font-light flex-grow opacity-80">Unlocking bootloaders, flashing custom ROMs, and modifying system partitions on Android devices.</p>
+                                <h3 class="text-white text-2xl font-semibold mt-2">Unlocking Potential</h3>
+                                <p class="text-gray-400 font-light flex-grow">Unlocking bootloaders, flashing custom ROMs, and modifying system partitions on Android devices.</p>
                                 <span class="material-symbols-outlined text-white/50 mt-auto project-arrow">arrow_forward</span>
                             </a>
                             <a href="#" class="project-card flex flex-col items-center text-center gap-4 p-8 rounded-2xl">
                                 <span class="material-symbols-outlined text-6xl project-icon">auto_awesome</span>
-                                <h3 class="text-2xl font-semibold mt-2">Creative Co-pilot</h3>
-                                <p class="font-light flex-grow opacity-80">Leveraging large language models for prompt-driven development and custom tool creation.</p>
+                                <h3 class="text-white text-2xl font-semibold mt-2">Creative Co-pilot</h3>
+                                <p class="text-gray-400 font-light flex-grow">Leveraging large language models for prompt-driven development and custom tool creation.</p>
                                 <span class="material-symbols-outlined text-white/50 mt-auto project-arrow">arrow_forward</span>
                             </a>
                         </div>
@@ -427,8 +244,8 @@
                     <section class="relative flex flex-col items-center gap-12">
                         <div class="w-full text-center max-w-3xl p-10 glass-card">
                             <h2 class="section-title">Off the <span class="accent-text">Clock</span></h2>
-                            <p class="text-lg md:text-xl leading-relaxed font-light mt-10">
-                                My curiosity for systems doesn't power down. I find the same joy in designing redstone circuits in Minecraft—a sandbox for digital logic—as I do in studying the elegant interplay of physics and engineering that defines aviation. For me, it's all about appreciating a beautifully designed structure, whether it's made of code, blocks, or wings.
+                            <p class="text-lg md:text-xl leading-relaxed font-light text-gray-300 mt-10">
+                                    My curiosity for systems doesn't power down. I find the same joy in designing redstone circuits in Minecraft—a sandbox for digital logic—as I do in studying the elegant interplay of physics and engineering that defines aviation. For me, it's all about appreciating a beautifully designed structure, whether it's made of code, blocks, or wings.
                             </p>
                         </div>
                     </section>
@@ -437,9 +254,9 @@
         </main>
 
         <!-- Footer -->
-        <footer class="w-full text-center p-8 font-light border-t mt-16">
+        <footer class="w-full text-center p-8 text-gray-500 font-light border-t border-white/10 mt-16">
             <p>© 2025 Anirudh Gupta. Crafted with curiosity.</p>
-            <p class="text-sm mt-2 opacity-70">Human-Directed, AI-Developed</p>
+            <p class="text-sm mt-2">Human-Directed, AI-Developed</p>
         </footer>
     </div>
 
@@ -500,18 +317,20 @@
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
                 // Create a subtle glow effect
-                const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color');
-                const isModern = document.body.classList.contains('theme-modern');
-
-                if (isModern) {
-                    card.style.boxShadow = `0 12px 48px 0 rgba(0, 0, 0, 0.06), 0 0 20px ${accentColor}26, inset 0 1px 0 0 rgba(255, 255, 255, 0.5)`;
-                } else {
-                    card.style.boxShadow = `0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px ${accentColor}40`;
-                }
+                card.style.boxShadow = `0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px ${getComputedStyle(document.documentElement).getPropertyValue('--accent-color')}40`;
             });
 
             card.addEventListener('mouseleave', () => {
                 card.style.boxShadow = '';
+            });
+        });
+
+                // Prevent project cards from refreshing the page
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', (event) => {
+                event.preventDefault(); // This is the magic line
+                // We can add more functionality here later, like opening a pop-up
+                console.log("Project card clicked. Navigation prevented.");
             });
         });
     </script>
