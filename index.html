@@ -12,13 +12,13 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Anirudh Gupta - Digital Explorer">
     <meta name="twitter:description" content="Seeking elegant architecture in code and cosmos">
-    
+
     <!-- Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -45,7 +45,7 @@
             --backdrop-blur: 10px;
             --card-hover-bg: rgba(26, 26, 26, 0.5);
             --theme-icon-color: #FFFFFF;
-            
+
             /* Responsive spacing variables */
             --spacing-card: clamp(2rem, 4vw, 3rem);
             --spacing-section: clamp(1.5rem, 3vw, 2rem);
@@ -103,7 +103,7 @@
 
         /* Modern theme background with visible elements for blur effect */
         body.theme-modern {
-            background: 
+            background:
                 linear-gradient(135deg, #F5F5F7 0%, #FAFAFA 100%);
             position: relative;
         }
@@ -116,7 +116,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.25) 0%, transparent 25%),
                 radial-gradient(circle at 75% 40%, rgba(168, 85, 247, 0.2) 0%, transparent 25%),
                 radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 30%),
@@ -134,7 +134,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
+            background-image:
                 repeating-linear-gradient(
                     45deg,
                     transparent,
@@ -193,19 +193,19 @@
         }
 
         @keyframes morphing {
-            0%, 100% { 
+            0%, 100% {
                 border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
                 transform: rotate(0deg) scale(1);
             }
-            25% { 
+            25% {
                 border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
                 transform: rotate(90deg) scale(1.1);
             }
-            50% { 
+            50% {
                 border-radius: 40% 60% 60% 40% / 70% 30% 40% 60%;
                 transform: rotate(180deg) scale(0.95);
             }
-            75% { 
+            75% {
                 border-radius: 70% 30% 50% 50% / 30% 70% 40% 60%;
                 transform: rotate(270deg) scale(1.05);
             }
@@ -307,7 +307,7 @@
             backdrop-filter: blur(30px) saturate(120%);
             -webkit-backdrop-filter: blur(30px) saturate(120%);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 
+            box-shadow:
                 0 8px 32px 0 rgba(0, 0, 0, 0.08),
                 inset 0 2px 0 0 rgba(255, 255, 255, 0.5);
         }
@@ -328,7 +328,7 @@
             backdrop-filter: blur(25px) saturate(120%);
             -webkit-backdrop-filter: blur(25px) saturate(120%);
             border: 1px solid rgba(255, 255, 255, 0.35);
-            box-shadow: 
+            box-shadow:
                 0 4px 24px 0 rgba(0, 0, 0, 0.04),
                 inset 0 2px 0 0 rgba(255, 255, 255, 0.4);
         }
@@ -342,7 +342,7 @@
         body.theme-modern .project-card:hover {
             transform: translateY(-8px);
             background: rgba(255, 255, 255, 0.3);
-            box-shadow: 
+            box-shadow:
                 0 12px 48px 0 rgba(0, 0, 0, 0.1),
                 var(--shadow-accent),
                 inset 0 2px 0 0 rgba(255, 255, 255, 0.6);
@@ -382,7 +382,7 @@
 
         body.theme-modern .profile-image {
             border: 4px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 
+            box-shadow:
                 0 10px 40px 0 rgba(0, 0, 0, 0.05),
                 0 0 0 1px rgba(255, 255, 255, 0.6);
         }
@@ -403,6 +403,44 @@
         body.theme-modern .text-highlight {
             border-image: var(--text-highlight-bg) 1;
             border-width: 2px;
+        }
+
+        /* Hero Section Styles */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Scroll Arrow */
+        .scroll-arrow {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounceDown 2s infinite;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .scroll-arrow:hover {
+            color: var(--accent-color);
+        }
+
+        @keyframes bounceDown {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(5px);
+            }
         }
 
         /* Theme Toggle Button */
@@ -429,7 +467,7 @@
         body.theme-modern .theme-toggle {
             background: rgba(255, 255, 255, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.35);
-            box-shadow: 
+            box-shadow:
                 0 4px 24px 0 rgba(0, 0, 0, 0.06),
                 inset 0 2px 0 0 rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(25px) saturate(120%);
@@ -493,6 +531,9 @@
                 animation-duration: 0.01ms !important;
                 transition-duration: 0.01ms !important;
             }
+            .scroll-arrow {
+                animation: none;
+            }
         }
 
         /* Footer adjustments */
@@ -535,8 +576,8 @@
     <div class="bg-shape bg-shape-3"></div>
 
     <!-- Theme Toggle Button -->
-    <button class="theme-toggle" 
-            onclick="toggleTheme()" 
+    <button class="theme-toggle"
+            onclick="toggleTheme()"
             aria-label="Switch to light theme"
             aria-pressed="false"
             role="switch">
@@ -544,27 +585,36 @@
     </button>
 
     <!-- Main Container -->
-    <div id="main-content" class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
-        <main class="flex h-full grow flex-col items-center">
+    <div id="main-container" class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <header class="flex flex-col md:flex-row items-center justify-center gap-12 text-center md:text-left relative px-6">
+                <div class="relative">
+                    <div class="profile-image size-48 md:size-52 rounded-full bg-[#2a2a2a] border-4 shadow-2xl"></div>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter">Anirudh Gupta</h1>
+                    <p class="text-2xl md:text-3xl lg:text-4xl accent-text font-['Playfair_Display'] italic">Digital Explorer.</p>
+                    <p class="text-base md:text-lg lg:text-xl max-w-xl mt-3 font-light">
+                        Seeking the elegant architecture in
+                        <span class="text-highlight">code</span>
+                        and in the
+                        <span class="text-highlight">cosmos.</span>
+                    </p>
+                </div>
+            </header>
+
+            <!-- Scroll Arrow -->
+            <div class="scroll-arrow" onclick="document.getElementById('main-content').scrollIntoView({behavior: 'smooth'})">
+                <span class="material-symbols-outlined text-3xl">expand_more</span>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main id="main-content" class="flex h-full grow flex-col items-center">
             <div class="w-full max-w-6xl px-6 py-20 sm:py-28">
                 <div class="flex flex-col gap-24 md:gap-32">
-
-                    <!-- Header Section -->
-                    <header class="flex flex-col md:flex-row items-center justify-center gap-12 text-center md:text-left relative">
-                        <div class="relative">
-                            <div class="profile-image size-48 md:size-52 rounded-full bg-[#2a2a2a] border-4 shadow-2xl"></div>
-                        </div>
-                        <div class="flex flex-col gap-4">
-                            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter">Anirudh Gupta</h1>
-                            <p class="text-2xl md:text-3xl lg:text-4xl accent-text font-['Playfair_Display'] italic">Digital Explorer.</p>
-                            <p class="text-base md:text-lg lg:text-xl max-w-xl mt-3 font-light">
-                                Seeking the elegant architecture in
-                                <span class="text-highlight">code</span>
-                                and in the
-                                <span class="text-highlight">cosmos.</span>
-                            </p>
-                        </div>
-                    </header>
 
                     <!-- Mission Section -->
                     <section class="relative flex flex-col items-center gap-10">
@@ -585,8 +635,8 @@
                             <h2 class="section-title">The <span class="accent-text">Workshop</span></h2>
                         </div>
                         <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                            <button type="button" 
-                                    class="project-card flex flex-col items-center gap-3 p-6 md:p-8 rounded-2xl group" 
+                            <button type="button"
+                                    class="project-card flex flex-col items-center gap-3 p-6 md:p-8 rounded-2xl group"
                                     role="link"
                                     aria-label="View System Architect project details">
                                 <span class="material-symbols-outlined text-5xl project-icon">memory</span>
@@ -594,7 +644,7 @@
                                 <p class="text-sm font-light flex-grow opacity-75">A study of system architecture, package management, and performance tuning through Arch Linux.</p>
                                 <span class="material-symbols-outlined mt-auto project-arrow">arrow_forward</span>
                             </button>
-                            <button type="button" 
+                            <button type="button"
                                     class="project-card flex flex-col items-center gap-3 p-6 md:p-8 rounded-2xl group"
                                     role="link"
                                     aria-label="View Unlocking Potential project details">
@@ -603,7 +653,7 @@
                                 <p class="text-sm font-light flex-grow opacity-75">Unlocking bootloaders, flashing custom ROMs, and modifying system partitions on Android devices.</p>
                                 <span class="material-symbols-outlined mt-auto project-arrow">arrow_forward</span>
                             </button>
-                            <button type="button" 
+                            <button type="button"
                                     class="project-card flex flex-col items-center gap-3 p-6 md:p-8 rounded-2xl group"
                                     role="link"
                                     aria-label="View Creative Co-pilot project details">
@@ -646,7 +696,7 @@
         // Cache DOM queries
         const bgShapes = document.querySelectorAll('.bg-shape');
         const themeToggle = document.querySelector('.theme-toggle');
-        
+
         // Particle pool for performance optimization
         const particlePool = [];
 
@@ -670,15 +720,15 @@
             const body = document.body;
             body.classList.toggle('theme-modern');
             const isModern = body.classList.contains('theme-modern');
-            
+
             // Save preference
             localStorage.setItem('theme', isModern ? 'modern' : 'dark');
-            
+
             // Update background shapes visibility
             bgShapes.forEach(shape => {
                 shape.style.display = isModern ? 'block' : 'none';
             });
-            
+
             // Update accessibility attributes
             themeToggle.setAttribute('aria-pressed', isModern.toString());
             themeToggle.setAttribute('aria-label', `Switch to ${isModern ? 'dark' : 'light'} theme`);
@@ -688,20 +738,20 @@
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             const isModern = savedTheme === 'modern';
-            
+
             if (isModern) {
                 document.body.classList.add('theme-modern');
             }
-            
+
             // Set initial visibility of background shapes
             bgShapes.forEach(shape => {
                 shape.style.display = isModern ? 'block' : 'none';
             });
-            
+
             // Set initial accessibility attributes
             themeToggle.setAttribute('aria-pressed', isModern.toString());
             themeToggle.setAttribute('aria-label', `Switch to ${isModern ? 'dark' : 'light'} theme`);
-            
+
             // Remove loading state with requestAnimationFrame for smooth transition
             requestAnimationFrame(() => {
                 document.body.classList.remove('loading');
@@ -710,7 +760,7 @@
 
         // Explorer's Wake Trail - Only if motion is allowed
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        
+
         if (!prefersReducedMotion) {
             let mouseX = 0, mouseY = 0;
             let lastParticleTime = 0;
@@ -757,7 +807,7 @@
             if (card) {
                 const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color');
                 const isModern = document.body.classList.contains('theme-modern');
-                
+
                 if (isModern) {
                     card.style.boxShadow = `0 12px 48px 0 rgba(0, 0, 0, 0.1), 0 0 20px ${accentColor}26, inset 0 2px 0 0 rgba(255, 255, 255, 0.6)`;
                 } else {
