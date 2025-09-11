@@ -110,7 +110,6 @@
         }
 
         /* Premium Film Grain Texture - Both Themes */
-        /* (Was not what I expected. So I disabled this entirely.)
         body::after {
             content: '';
             position: fixed;
@@ -119,7 +118,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.025;
             z-index: 2;
             background-image:
                 repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px),
@@ -138,7 +137,7 @@
             70% { transform: translate(-2%, -2%); }
             80% { transform: translate(2%, 1%); }
             90% { transform: translate(-1%, -1%); }
-        } */
+        }
 
         /* Interactive Glass Orbs for Light Theme */
         .theme-modern .glass-orb {
@@ -482,6 +481,38 @@
             overflow: hidden;
         }
 
+        /* Vector Section Styles */
+        .vector-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+
+        .vector-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .vector-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .sub-heading {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin: 2rem 0 1rem 0;
+        }
+
         /* Explorer's Wake Trail - Performance optimized */
         .particle {
             position: fixed;
@@ -516,6 +547,30 @@
             }
         }
 
+        /* Footer Styles */
+        footer {
+            border-top-color: var(--footer-border);
+        }
+
+        body.theme-modern footer {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .footer-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-link:hover {
+            opacity: 0.8;
+        }
+
         /* Reduced motion support */
         @media (prefers-reduced-motion: reduce) {
             .particle {
@@ -536,17 +591,6 @@
             body::after {
                 animation: none;
             }
-        }
-
-        /* Footer adjustments */
-        footer {
-            border-top-color: var(--footer-border);
-        }
-
-        body.theme-modern footer {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
         }
 
         /* Mobile optimizations */
@@ -602,10 +646,10 @@
                     <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter">Anirudh Gupta</h1>
                     <p class="text-2xl md:text-3xl lg:text-4xl accent-text font-['Playfair_Display'] italic">Digital Explorer.</p>
                     <p class="text-base md:text-lg lg:text-xl max-w-xl mt-3 font-light">
-                        Seeking the elegant architecture in
+                        My focus is the architecture of systems, from the foundational logic of
                         <span class="text-highlight">code</span>
-                        and in the
-                        <span class="text-highlight">cosmos.</span>
+                        to the elegant engineering of the
+                        <span class="text-highlight">skies.</span>
                     </p>
                 </div>
             </header>
@@ -621,62 +665,68 @@
             <div class="w-full max-w-6xl px-6 py-20 sm:py-28">
                 <div class="flex flex-col gap-24 md:gap-32">
 
-                    <!-- Mission Section -->
+                    <!-- The Thesis Section -->
                     <section class="relative flex flex-col items-center gap-10">
                         <div class="text-center max-w-3xl glass-card">
-                            <h2 class="section-title mb-8">The <span class="accent-text">Mission</span></h2>
+                            <h2 class="section-title mb-8">The <span class="accent-text">Thesis</span></h2>
                             <p class="text-lg md:text-xl leading-relaxed font-light">
-                                For me, the world is a collection of systems, each with its own architecture. My goal is to comprehend these blueprints, from the foundational logic of the
-                                <strong class="font-semibold">Linux kernel</strong> to the physical principles that govern
-                                <strong class="font-semibold">flight.</strong>
-                                It's in understanding these core structures that true mastery is found.
+                                Most people see the screen; I want to see the system. My approach is to learn by doing—to deconstruct complexity, get my hands dirty, and see firsthand what makes things tick. My journey is about pushing past the defaults to explore the frontiers of what's possible and discover the elegant truths hidden in the architecture.
                             </p>
                         </div>
                     </section>
 
-                    <!-- Workshop Section -->
+                    <!-- The Evidence Section -->
                     <section class="flex flex-col items-center gap-10 w-full">
                         <div class="text-center">
-                            <h2 class="section-title">The <span class="accent-text">Workshop</span></h2>
+                            <h2 class="section-title">The <span class="accent-text">Evidence</span></h2>
                         </div>
                         <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                             <button type="button"
                                     class="project-card flex flex-col items-center gap-3 p-6 md:p-8 rounded-2xl group"
                                     role="link"
-                                    aria-label="View System Architect project details">
+                                    aria-label="View The Architect project details">
                                 <span class="material-symbols-outlined text-5xl project-icon">memory</span>
-                                <h3 class="text-xl font-semibold mt-1">System Architect</h3>
-                                <p class="text-sm font-light flex-grow opacity-75">A study of system architecture, package management, and performance tuning through Arch Linux.</p>
+                                <h3 class="text-xl font-semibold mt-1">The Architect</h3>
+                                <p class="text-sm font-light flex-grow opacity-75">My core discipline is building from first principles. I craft bespoke operating systems and environments to understand the intricate dialogue between hardware and software, creating tools that are not just functional, but an intentional extension of their user.</p>
                                 <span class="material-symbols-outlined mt-auto project-arrow">arrow_forward</span>
                             </button>
                             <button type="button"
                                     class="project-card flex flex-col items-center gap-3 p-6 md:p-8 rounded-2xl group"
                                     role="link"
-                                    aria-label="View Unlocking Potential project details">
+                                    aria-label="View The Alchemist project details">
                                 <span class="material-symbols-outlined text-5xl project-icon">tune</span>
-                                <h3 class="text-xl font-semibold mt-1">Unlocking Potential</h3>
-                                <p class="text-sm font-light flex-grow opacity-75">Unlocking bootloaders, flashing custom ROMs, and modifying system partitions on Android devices.</p>
+                                <h3 class="text-xl font-semibold mt-1">The Alchemist</h3>
+                                <p class="text-sm font-light flex-grow opacity-75">I enjoy modifying the core programming of devices to unlock their true potential. This is an exploration into the hidden layers of technology—a process of rewriting the rules to transform a closed product into an open canvas.</p>
                                 <span class="material-symbols-outlined mt-auto project-arrow">arrow_forward</span>
                             </button>
                             <button type="button"
                                     class="project-card flex flex-col items-center gap-3 p-6 md:p-8 rounded-2xl group"
                                     role="link"
-                                    aria-label="View Creative Co-pilot project details">
+                                    aria-label="View The Auteur project details">
                                 <span class="material-symbols-outlined text-5xl project-icon">auto_awesome</span>
-                                <h3 class="text-xl font-semibold mt-1">Creative Co-pilot</h3>
-                                <p class="text-sm font-light flex-grow opacity-75">Leveraging large language models for prompt-driven development and custom tool creation.</p>
+                                <h3 class="text-xl font-semibold mt-1">The Auteur</h3>
+                                <p class="text-sm font-light flex-grow opacity-75">I direct AI not as a tool, but as a creative partner. This portfolio is a product of that dialogue—a fusion of human vision and machine intelligence used to architect, design, and build a complete digital experience from a single prompt.</p>
                                 <span class="material-symbols-outlined mt-auto project-arrow">arrow_forward</span>
                             </button>
                         </div>
                     </section>
 
-                    <!-- Off the Clock Section -->
+                    <!-- The Vector Section -->
                     <section class="relative flex flex-col items-center gap-10">
                         <div class="w-full text-center max-w-3xl glass-card">
-                            <h2 class="section-title mb-8">Off the <span class="accent-text">Clock</span></h2>
+                            <h2 class="section-title mb-8">The <span class="accent-text">Vector</span></h2>
                             <p class="text-base md:text-lg leading-relaxed font-light">
-                                My curiosity for systems doesn't power down. I find the same joy in designing redstone circuits in Minecraft—a sandbox for digital logic—as I do in studying the elegant interplay of physics and engineering that defines aviation. For me, it's all about appreciating a beautifully designed structure, whether it's made of code, blocks, or wings.
+                                Curiosity is a map that expands as you explore it. The impulse to build extends beyond the terminal; the same digital logic used to craft virtual machines and the same precision that defines modern aviation are the tools I'm using to shape what's next.
                             </p>
+                            <h3 class="sub-heading">Points of Interest</h3>
+                            <ul class="vector-list text-left">
+                                <li>Installing Arch Linux from scratch to master the fundamentals of a modern operating system.</li>
+                                <li>Developing fluency in core programming languages (Python, JavaScript) and web technologies (HTML, CSS).</li>
+                                <li>Mastering the principles of UI/UX to design and build intuitive, beautiful interfaces.</li>
+                                <li>Building a custom CNC plotter to bridge the gap between digital code and physical creation.</li>
+                                <li>Architecting a home server to manage data and explore network infrastructure.</li>
+                                <li>Ultimately, to build a career at the intersection of complex machines and intelligent software—solving high-stakes engineering problems in deeply technical fields like aerospace, robotics, or critical software infrastructure.</li>
+                            </ul>
                         </div>
                     </section>
 
@@ -686,8 +736,12 @@
 
         <!-- Footer -->
         <footer class="w-full text-center px-6 py-8 font-light border-t mt-12">
-            <p>© 2025 Anirudh Gupta. Human-Directed, AI-Developed.</p>
-            <p class="text-xs md:text-sm mt-2 opacity-60">This is a casual portfolio for me. Main purpose was to showcase the website, coded by AI but designed by me. The contents, right now, are just placeholder</p>
+            <p>© 2025 Anirudh Gupta. Human-Directed, AI-Forged.</p>
+            <p class="text-xs md:text-sm mt-2 opacity-60 italic">Countless prompts were harmed in the making of this portfolio.</p>
+            <a href="https://github.com/AnAnonymousPotato" target="_blank" rel="noopener noreferrer" class="footer-link mt-2 inline-flex">
+                <span class="material-symbols-outlined text-base">code</span>
+                <span>Explore the Architecture</span>
+            </a>
         </footer>
     </div>
 
