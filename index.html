@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Explorer - Anirudh Gupta</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <meta name="description" content="Portfolio of Anirudh Gupta - Digital Explorer seeking elegant architecture in code and cosmos">
+    <meta property="og:title" content="Anirudh Gupta - Digital Explorer">
+    <meta property="og:description" content="Seeking elegant architecture in code and cosmos">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/avatar.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Anirudh Gupta - Digital Explorer">
+    <meta name="twitter:description" content="Seeking elegant architecture in code and cosmos">
+    
+    <!-- Optimized Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         /* Theme Engine - CSS Variables */
@@ -32,6 +45,10 @@
             --backdrop-blur: 10px;
             --card-hover-bg: rgba(26, 26, 26, 0.5);
             --theme-icon-color: #FFFFFF;
+            
+            /* Responsive spacing variables */
+            --spacing-card: clamp(2rem, 4vw, 3rem);
+            --spacing-section: clamp(1.5rem, 3vw, 2rem);
         }
 
         /* Light/Modern Theme */
@@ -57,6 +74,31 @@
             --backdrop-blur: 20px;
             --card-hover-bg: rgba(255, 255, 255, 0.35);
             --theme-icon-color: #1F2937;
+        }
+
+        /* Screen reader only utility class */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .sr-only:focus {
+            position: absolute;
+            width: auto;
+            height: auto;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            overflow: visible;
+            clip: auto;
+            white-space: normal;
+            z-index: 9999;
         }
 
         /* Modern theme background with visible elements for blur effect */
@@ -257,6 +299,7 @@
             border: 1px solid var(--card-border);
             border-radius: 1rem;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            padding: var(--spacing-card);
         }
 
         body.theme-modern .glass-card {
@@ -275,6 +318,9 @@
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
         }
 
         body.theme-modern .project-card {
@@ -400,7 +446,7 @@
             transition: transform 0.3s ease;
         }
 
-        /* Explorer's Wake Trail */
+        /* Explorer's Wake Trail - Performance optimized */
         .particle {
             position: fixed;
             pointer-events: none;
@@ -411,6 +457,8 @@
             opacity: 0.8;
             animation: particleFade 1.5s linear forwards;
             z-index: 999;
+            contain: layout style paint;
+            will-change: transform, opacity;
         }
 
         body.theme-modern .particle {
@@ -432,6 +480,21 @@
             }
         }
 
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .particle {
+                animation: none;
+                opacity: 0;
+            }
+            .bg-shape {
+                animation: none;
+            }
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
         /* Footer adjustments */
         footer {
             border-top-color: var(--footer-border);
@@ -448,30 +511,40 @@
             .section-title {
                 font-size: 1.75rem;
             }
-            
-            .glass-card {
-                padding: 2rem;
-            }
-            
-            .project-card {
-                padding: 1.75rem;
-            }
+        }
+
+        /* Loading state */
+        body.loading {
+            opacity: 0;
+        }
+
+        body {
+            transition: opacity 0.5s ease;
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased loading">
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-purple-600 text-white px-4 py-2 rounded-lg z-50">
+        Skip to main content
+    </a>
+
     <!-- Background shapes for light theme -->
     <div class="bg-shape bg-shape-1"></div>
     <div class="bg-shape bg-shape-2"></div>
     <div class="bg-shape bg-shape-3"></div>
 
     <!-- Theme Toggle Button -->
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <button class="theme-toggle" 
+            onclick="toggleTheme()" 
+            aria-label="Switch to light theme"
+            aria-pressed="false"
+            role="switch">
         <span class="material-symbols-outlined">palette</span>
     </button>
 
     <!-- Main Container -->
-    <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+    <div id="main-content" class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
         <main class="flex h-full grow flex-col items-center">
             <div class="w-full max-w-6xl px-6 py-20 sm:py-28">
                 <div class="flex flex-col gap-24 md:gap-32">
@@ -495,7 +568,7 @@
 
                     <!-- Mission Section -->
                     <section class="relative flex flex-col items-center gap-10">
-                        <div class="text-center max-w-3xl p-8 md:p-10 glass-card">
+                        <div class="text-center max-w-3xl glass-card">
                             <h2 class="section-title mb-8">The <span class="accent-text">Mission</span></h2>
                             <p class="text-lg md:text-xl leading-relaxed font-light">
                                 For me, the world is a collection of systems, each with its own architecture. My goal is to comprehend these blueprints, from the foundational logic of the
@@ -512,30 +585,39 @@
                             <h2 class="section-title">The <span class="accent-text">Workshop</span></h2>
                         </div>
                         <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                            <a href="#" class="project-card flex flex-col items-center text-center gap-3 p-6 md:p-8 rounded-2xl group">
+                            <button type="button" 
+                                    class="project-card flex flex-col items-center gap-3 p-6 md:p-8 rounded-2xl group" 
+                                    role="link"
+                                    aria-label="View System Architect project details">
                                 <span class="material-symbols-outlined text-5xl project-icon">memory</span>
                                 <h3 class="text-xl font-semibold mt-1">System Architect</h3>
                                 <p class="text-sm font-light flex-grow opacity-75">A study of system architecture, package management, and performance tuning through Arch Linux.</p>
                                 <span class="material-symbols-outlined mt-auto project-arrow">arrow_forward</span>
-                            </a>
-                            <a href="#" class="project-card flex flex-col items-center text-center gap-3 p-6 md:p-8 rounded-2xl group">
+                            </button>
+                            <button type="button" 
+                                    class="project-card flex flex-col items-center gap-3 p-6 md:p-8 rounded-2xl group"
+                                    role="link"
+                                    aria-label="View Unlocking Potential project details">
                                 <span class="material-symbols-outlined text-5xl project-icon">tune</span>
                                 <h3 class="text-xl font-semibold mt-1">Unlocking Potential</h3>
                                 <p class="text-sm font-light flex-grow opacity-75">Unlocking bootloaders, flashing custom ROMs, and modifying system partitions on Android devices.</p>
                                 <span class="material-symbols-outlined mt-auto project-arrow">arrow_forward</span>
-                            </a>
-                            <a href="#" class="project-card flex flex-col items-center text-center gap-3 p-6 md:p-8 rounded-2xl group">
+                            </button>
+                            <button type="button" 
+                                    class="project-card flex flex-col items-center gap-3 p-6 md:p-8 rounded-2xl group"
+                                    role="link"
+                                    aria-label="View Creative Co-pilot project details">
                                 <span class="material-symbols-outlined text-5xl project-icon">auto_awesome</span>
                                 <h3 class="text-xl font-semibold mt-1">Creative Co-pilot</h3>
                                 <p class="text-sm font-light flex-grow opacity-75">Leveraging large language models for prompt-driven development and custom tool creation.</p>
                                 <span class="material-symbols-outlined mt-auto project-arrow">arrow_forward</span>
-                            </a>
+                            </button>
                         </div>
                     </section>
 
                     <!-- Off the Clock Section -->
                     <section class="relative flex flex-col items-center gap-10">
-                        <div class="w-full text-center max-w-3xl p-8 md:p-10 glass-card">
+                        <div class="w-full text-center max-w-3xl glass-card">
                             <h2 class="section-title mb-8">Off the <span class="accent-text">Clock</span></h2>
                             <p class="text-base md:text-lg leading-relaxed font-light">
                                 My curiosity for systems doesn't power down. I find the same joy in designing redstone circuits in Minecraft—a sandbox for digital logic—as I do in studying the elegant interplay of physics and engineering that defines aviation. For me, it's all about appreciating a beautifully designed structure, whether it's made of code, blocks, or wings.
@@ -554,19 +636,55 @@
     </div>
 
     <script>
-        // Theme Switcher Logic
-        function toggleTheme() {
-            document.body.classList.toggle('theme-modern');
-            const isModern = document.body.classList.contains('theme-modern');
-            localStorage.setItem('theme', isModern ? 'modern' : 'dark');
-            
-            // Toggle background shapes visibility
-            document.querySelectorAll('.bg-shape').forEach(shape => {
-                shape.style.display = isModern ? 'block' : 'none';
-            });
+        // Constants for better maintainability
+        const PARTICLE_THROTTLE_MS = 50;
+        const PARTICLE_LIFETIME_MS = 1500;
+        const MAX_POOL_SIZE = 20;
+        const PARTICLE_MIN_DISTANCE = 30;
+        const PARTICLE_MAX_DISTANCE = 50;
+
+        // Cache DOM queries
+        const bgShapes = document.querySelectorAll('.bg-shape');
+        const themeToggle = document.querySelector('.theme-toggle');
+        
+        // Particle pool for performance optimization
+        const particlePool = [];
+
+        function getParticle() {
+            if (particlePool.length > 0) {
+                return particlePool.pop();
+            }
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            return particle;
         }
 
-        // Load saved theme preference
+        function returnParticle(particle) {
+            if (particlePool.length < MAX_POOL_SIZE) {
+                particlePool.push(particle);
+            }
+        }
+
+        // Theme Switcher Logic
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('theme-modern');
+            const isModern = body.classList.contains('theme-modern');
+            
+            // Save preference
+            localStorage.setItem('theme', isModern ? 'modern' : 'dark');
+            
+            // Update background shapes visibility
+            bgShapes.forEach(shape => {
+                shape.style.display = isModern ? 'block' : 'none';
+            });
+            
+            // Update accessibility attributes
+            themeToggle.setAttribute('aria-pressed', isModern.toString());
+            themeToggle.setAttribute('aria-label', `Switch to ${isModern ? 'dark' : 'light'} theme`);
+        }
+
+        // Load saved theme preference and initialize
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             const isModern = savedTheme === 'modern';
@@ -576,59 +694,67 @@
             }
             
             // Set initial visibility of background shapes
-            document.querySelectorAll('.bg-shape').forEach(shape => {
+            bgShapes.forEach(shape => {
                 shape.style.display = isModern ? 'block' : 'none';
             });
-
-            // Fade in animation on load
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                document.body.style.transition = 'opacity 0.5s ease';
-                document.body.style.opacity = '1';
-            }, 100);
+            
+            // Set initial accessibility attributes
+            themeToggle.setAttribute('aria-pressed', isModern.toString());
+            themeToggle.setAttribute('aria-label', `Switch to ${isModern ? 'dark' : 'light'} theme`);
+            
+            // Remove loading state with requestAnimationFrame for smooth transition
+            requestAnimationFrame(() => {
+                document.body.classList.remove('loading');
+            });
         });
 
-        // Explorer's Wake Trail
-        let mouseX = 0, mouseY = 0;
-        let lastParticleTime = 0;
+        // Explorer's Wake Trail - Only if motion is allowed
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (!prefersReducedMotion) {
+            let mouseX = 0, mouseY = 0;
+            let lastParticleTime = 0;
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
 
-            const currentTime = Date.now();
-            if (currentTime - lastParticleTime > 50) { // Throttle particle creation
-                createParticle(mouseX, mouseY);
-                lastParticleTime = currentTime;
+                const currentTime = Date.now();
+                if (currentTime - lastParticleTime > PARTICLE_THROTTLE_MS) {
+                    createParticle(mouseX, mouseY);
+                    lastParticleTime = currentTime;
+                }
+            });
+
+            function createParticle(x, y) {
+                const particle = getParticle();
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+
+                // Random direction for particle movement
+                const angle = Math.random() * Math.PI * 2;
+                const distance = PARTICLE_MIN_DISTANCE + Math.random() * (PARTICLE_MAX_DISTANCE - PARTICLE_MIN_DISTANCE);
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+
+                document.body.appendChild(particle);
+
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                    returnParticle(particle);
+                }, PARTICLE_LIFETIME_MS);
             }
-        });
-
-        function createParticle(x, y) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = x + 'px';
-            particle.style.top = y + 'px';
-
-            // Random direction for particle movement
-            const angle = Math.random() * Math.PI * 2;
-            const distance = 30 + Math.random() * 20;
-            const tx = Math.cos(angle) * distance;
-            const ty = Math.sin(angle) * distance;
-
-            particle.style.setProperty('--tx', tx + 'px');
-            particle.style.setProperty('--ty', ty + 'px');
-
-            document.body.appendChild(particle);
-
-            setTimeout(() => {
-                particle.remove();
-            }, 1500);
         }
 
-        // Project Card Manager
-        document.querySelectorAll('.project-card').forEach(card => {
-            // Handle hover for glow effect
-            card.addEventListener('mouseenter', () => {
+        // Event delegation for project cards
+        document.addEventListener('mouseenter', (e) => {
+            const card = e.target.closest('.project-card');
+            if (card) {
                 const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color');
                 const isModern = document.body.classList.contains('theme-modern');
                 
@@ -637,17 +763,24 @@
                 } else {
                     card.style.boxShadow = `0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px ${accentColor}40`;
                 }
-            });
+            }
+        }, true);
 
-            card.addEventListener('mouseleave', () => {
+        document.addEventListener('mouseleave', (e) => {
+            const card = e.target.closest('.project-card');
+            if (card) {
                 card.style.boxShadow = '';
-            });
+            }
+        }, true);
 
-            // Prevent default navigation
-            card.addEventListener('click', (event) => {
-                event.preventDefault();
+        // Handle project card clicks
+        document.addEventListener('click', (e) => {
+            const card = e.target.closest('.project-card');
+            if (card) {
+                e.preventDefault();
                 // Future: Add modal or navigation logic here
-            });
+                console.log('Project card clicked:', card.querySelector('h3').textContent);
+            }
         });
 
         // Performance optimization: Debounce scroll events
