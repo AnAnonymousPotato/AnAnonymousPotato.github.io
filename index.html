@@ -78,6 +78,56 @@
             --theme-icon-color: #333333;
         }
 
+        /* Hide default cursor on desktop */
+        @media (hover: hover) and (pointer: fine) {
+            body {
+                cursor: none;
+            }
+
+            a, button, .scroll-arrow, .theme-toggle, .project-card, .footer-link {
+                cursor: none;
+            }
+        }
+
+        /* Custom Cursor Styles */
+        #cursor-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+        }
+
+        #cursor-circle {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--accent-color);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease, border-width 0.3s ease;
+            opacity: 0.6;
+        }
+
+        #cursor-circle.hover-active {
+            width: 45px;
+            height: 45px;
+            border-width: 2px;
+        }
+
+        /* Hide custom cursor on mobile */
+        @media (hover: none) or (pointer: coarse) {
+            #cursor-dot, #cursor-circle {
+                display: none !important;
+            }
+        }
+
         /* Screen reader only utility class */
         .sr-only {
             position: absolute;
@@ -195,7 +245,7 @@
         }
 
         /* Ensure content is above background elements but below grain */
-        body > *:not(::after) {
+        body > *:not(::after):not(#cursor-dot):not(#cursor-circle) {
             position: relative;
             z-index: 1;
         }
@@ -279,7 +329,6 @@
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             position: relative;
             overflow: hidden;
-            cursor: pointer;
             width: 100%;
             text-align: center;
         }
@@ -386,7 +435,6 @@
             left: 50%;
             transform: translateX(-50%);
             animation: bounceDown 2s infinite;
-            cursor: pointer;
             color: var(--text-muted);
             transition: color 0.3s ease;
         }
@@ -421,7 +469,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -591,6 +638,9 @@
             body::after {
                 animation: none;
             }
+            #cursor-dot, #cursor-circle {
+                display: none !important;
+            }
         }
 
         /* Mobile optimizations */
@@ -611,6 +661,10 @@
     </style>
 </head>
 <body class="antialiased loading">
+    <!-- Custom Cursor Elements -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-circle"></div>
+
     <!-- Skip to main content link -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-purple-600 text-white px-4 py-2 rounded-lg z-50">
         Skip to main content
@@ -746,6 +800,73 @@
     </div>
 
     <script>
+        // Check if device supports hover (desktop)
+        const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+        // Custom Cursor Logic - Only on Desktop
+        if (isDesktop) {
+            const cursorDot = document.getElementById('cursor-dot');
+            const cursorCircle = document.getElementById('cursor-circle');
+
+            let mouseX = 0, mouseY = 0;
+            let circleX = 0, circleY = 0;
+            let isHovering = false;
+
+            // Update cursor position
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+
+                // Dot follows exactly
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+            });
+
+            // Smooth circle animation with spring effect
+            function animateCursor() {
+                // Lerp for smooth following
+                const speed = 0.15;
+                circleX += (mouseX - circleX) * speed;
+                circleY += (mouseY - circleY) * speed;
+
+                cursorCircle.style.left = circleX + 'px';
+                cursorCircle.style.top = circleY + 'px';
+
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Add hover effect for interactive elements
+            const interactiveElements = 'a, button, .project-card, .theme-toggle, .scroll-arrow, .footer-link';
+
+            document.addEventListener('mouseenter', (e) => {
+                if (e.target.matches(interactiveElements) || e.target.closest(interactiveElements)) {
+                    cursorCircle.classList.add('hover-active');
+                    isHovering = true;
+                }
+            }, true);
+
+            document.addEventListener('mouseleave', (e) => {
+                if (e.target.matches(interactiveElements) || e.target.closest(interactiveElements)) {
+                    cursorCircle.classList.remove('hover-active');
+                    isHovering = false;
+                }
+            }, true);
+
+            // Hide cursor when leaving window
+            document.addEventListener('mouseout', (e) => {
+                if (!e.relatedTarget) {
+                    cursorDot.style.opacity = '0';
+                    cursorCircle.style.opacity = '0';
+                }
+            });
+
+            document.addEventListener('mouseover', () => {
+                cursorDot.style.opacity = '1';
+                cursorCircle.style.opacity = isHovering ? '0.8' : '0.6';
+            });
+        }
+
         // Constants for better maintainability
         const PARTICLE_THROTTLE_MS = 50;
         const PARTICLE_LIFETIME_MS = 1500;
