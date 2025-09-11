@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Explorer - Anirudh Gupta</title>
+    <title>Anirudh Gupta - Portfolio</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <meta name="description" content="Portfolio of Anirudh Gupta - Digital Explorer seeking elegant architecture in code and cosmos">
     <meta property="og:title" content="Anirudh Gupta - Digital Explorer">
     <meta property="og:description" content="Seeking elegant architecture in code and cosmos">
@@ -16,7 +17,7 @@
     <!-- Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,7 +37,7 @@
             --gradient-end: transparent;
             --dot-pattern: rgba(255, 255, 255, 0.05);
             --font-heading: 'Playfair Display', serif;
-            --font-body: 'Poppins', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
             --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             --shadow-accent: 0 0 15px rgba(138, 43, 226, 0.4);
             --profile-border: rgba(255, 255, 255, 0.1);
@@ -51,29 +52,30 @@
             --spacing-section: clamp(1.5rem, 3vw, 2rem);
         }
 
-        /* Light/Modern Theme */
+        /* Light/Modern Theme - Enhanced */
         body.theme-modern {
-            --accent-color: #6366F1;
-            --bg-color: #F5F5F7;
-            --text-color: #1F2937;
-            --text-muted: #6B7280;
-            --heading-color: #111827;
+            --accent-color: #FF6B6B;
+            --bg-color: #F0E7FF;
+            --bg-gradient-end: #FFFFFF;
+            --text-color: #333333;
+            --text-muted: #666666;
+            --heading-color: #1A1A1A;
             --card-bg: rgba(255, 255, 255, 0.25);
             --card-border: rgba(255, 255, 255, 0.45);
             --glass-bg: rgba(255, 255, 255, 0.2);
-            --gradient-start: rgba(99, 102, 241, 0.08);
-            --gradient-end: rgba(168, 85, 247, 0.05);
+            --gradient-start: rgba(255, 107, 107, 0.08);
+            --gradient-end: rgba(240, 231, 255, 0.05);
             --dot-pattern: transparent;
-            --font-heading: 'Inter', sans-serif;
+            --font-heading: 'Poppins', sans-serif;
             --font-body: 'Inter', sans-serif;
             --shadow-card: 0 10px 40px -10px rgba(0, 0, 0, 0.04);
-            --shadow-accent: 0 0 20px rgba(99, 102, 241, 0.15);
+            --shadow-accent: 0 0 25px rgba(255, 107, 107, 0.2);
             --profile-border: rgba(255, 255, 255, 0.5);
             --footer-border: rgba(0, 0, 0, 0.05);
-            --text-highlight-bg: linear-gradient(120deg, #6366F1, #A855F7);
+            --text-highlight-bg: linear-gradient(120deg, #FF6B6B, #FF8E8E);
             --backdrop-blur: 20px;
             --card-hover-bg: rgba(255, 255, 255, 0.35);
-            --theme-icon-color: #1F2937;
+            --theme-icon-color: #333333;
         }
 
         /* Screen reader only utility class */
@@ -101,114 +103,78 @@
             z-index: 9999;
         }
 
-        /* Modern theme background with visible elements for blur effect */
+        /* Modern theme background with enhanced gradient */
         body.theme-modern {
-            background:
-                linear-gradient(135deg, #F5F5F7 0%, #FAFAFA 100%);
+            background: linear-gradient(180deg, #F0E7FF 0%, #FFFFFF 100%);
             position: relative;
         }
 
-        /* Gradient mesh background for light theme */
-        body.theme-modern::before {
+        /* Premium Film Grain Texture - Both Themes */
+        /* (Was not what I expected. So I disabled this entirely.)
+        body::after {
             content: '';
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.25) 0%, transparent 25%),
-                radial-gradient(circle at 75% 40%, rgba(168, 85, 247, 0.2) 0%, transparent 25%),
-                radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 30%),
-                radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 15% 70%, rgba(251, 146, 60, 0.1) 0%, transparent 25%);
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Geometric shapes for light theme */
-        body.theme-modern::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            opacity: 0.6;
+            z-index: 2;
             background-image:
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 100px,
-                    rgba(99, 102, 241, 0.03) 100px,
-                    rgba(99, 102, 241, 0.03) 200px
-                ),
-                repeating-linear-gradient(
-                    -45deg,
-                    transparent,
-                    transparent 100px,
-                    rgba(168, 85, 247, 0.03) 100px,
-                    rgba(168, 85, 247, 0.03) 200px
-                );
-            pointer-events: none;
-            z-index: 0;
+                repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,.03) 2px, rgba(255,255,255,.03) 4px),
+                repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(0,0,0,.02) 2px, rgba(0,0,0,.02) 4px);
+            animation: grain 8s steps(10) infinite;
         }
 
-        /* Additional floating elements for depth */
-        .theme-modern .bg-shape {
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-1%, -1%); }
+            20% { transform: translate(1%, 2%); }
+            30% { transform: translate(-2%, 1%); }
+            40% { transform: translate(2%, -2%); }
+            50% { transform: translate(-1%, 2%); }
+            60% { transform: translate(1%, -1%); }
+            70% { transform: translate(-2%, -2%); }
+            80% { transform: translate(2%, 1%); }
+            90% { transform: translate(-1%, -1%); }
+        } */
+
+        /* Interactive Glass Orbs for Light Theme */
+        .theme-modern .glass-orb {
             position: fixed;
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            animation: morphing 20s ease-in-out infinite;
+            backdrop-filter: blur(2px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .theme-modern .bg-shape-1 {
-            width: 600px;
-            height: 600px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.2));
-            top: -300px;
-            left: -300px;
-            filter: blur(40px);
+        .theme-modern .glass-orb-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 107, 107, 0.3), rgba(255, 107, 107, 0.1));
+            box-shadow: 0 0 40px rgba(255, 107, 107, 0.2);
+            top: 10%;
+            left: 5%;
         }
 
-        .theme-modern .bg-shape-2 {
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(251, 146, 60, 0.15));
-            bottom: -250px;
-            right: -250px;
-            filter: blur(40px);
-            animation-delay: -10s;
-        }
-
-        .theme-modern .bg-shape-3 {
+        .theme-modern .glass-orb-2 {
             width: 400px;
             height: 400px;
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(59, 130, 246, 0.2));
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            filter: blur(60px);
-            animation-delay: -5s;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 142, 142, 0.25), rgba(255, 142, 142, 0.08));
+            box-shadow: 0 0 60px rgba(255, 142, 142, 0.15);
+            bottom: 20%;
+            right: 10%;
         }
 
-        @keyframes morphing {
-            0%, 100% {
-                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-                transform: rotate(0deg) scale(1);
-            }
-            25% {
-                border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-                transform: rotate(90deg) scale(1.1);
-            }
-            50% {
-                border-radius: 40% 60% 60% 40% / 70% 30% 40% 60%;
-                transform: rotate(180deg) scale(0.95);
-            }
-            75% {
-                border-radius: 70% 30% 50% 50% / 30% 70% 40% 60%;
-                transform: rotate(270deg) scale(1.05);
-            }
+        .theme-modern .glass-orb-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle at 30% 30%, rgba(240, 231, 255, 0.4), rgba(240, 231, 255, 0.15));
+            box-shadow: 0 0 30px rgba(240, 231, 255, 0.25);
+            top: 50%;
+            left: 60%;
         }
 
         /* Base Styles */
@@ -229,8 +195,8 @@
             position: relative;
         }
 
-        /* Ensure content is above background elements */
-        body > * {
+        /* Ensure content is above background elements but below grain */
+        body > *:not(::after) {
             position: relative;
             z-index: 1;
         }
@@ -242,12 +208,8 @@
 
         /* Modern theme typography adjustments */
         body.theme-modern h1 {
-            font-weight: 800;
+            font-weight: 900;
             letter-spacing: -0.03em;
-            background: linear-gradient(135deg, #1F2937 0%, #374151 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         body.theme-modern .accent-text {
@@ -255,7 +217,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         /* Custom Classes */
@@ -272,7 +234,7 @@
         }
 
         body.theme-modern .section-title {
-            font-weight: 800;
+            font-weight: 900;
         }
 
         .section-title::after {
@@ -304,12 +266,12 @@
 
         body.theme-modern .glass-card {
             background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(30px) saturate(120%);
-            -webkit-backdrop-filter: blur(30px) saturate(120%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px) saturate(120%);
+            -webkit-backdrop-filter: blur(10px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow:
                 0 8px 32px 0 rgba(0, 0, 0, 0.08),
-                inset 0 2px 0 0 rgba(255, 255, 255, 0.5);
+                inset 0 2px 0 0 rgba(255, 255, 255, 0.6);
         }
 
         .project-card {
@@ -325,9 +287,9 @@
 
         body.theme-modern .project-card {
             background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(25px) saturate(120%);
-            -webkit-backdrop-filter: blur(25px) saturate(120%);
-            border: 1px solid rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(10px) saturate(120%);
+            -webkit-backdrop-filter: blur(10px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow:
                 0 4px 24px 0 rgba(0, 0, 0, 0.04),
                 inset 0 2px 0 0 rgba(255, 255, 255, 0.4);
@@ -340,12 +302,16 @@
         }
 
         body.theme-modern .project-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-8px) scale(1.05);
             background: rgba(255, 255, 255, 0.3);
             box-shadow:
-                0 12px 48px 0 rgba(0, 0, 0, 0.1),
+                0 12px 48px 0 rgba(255, 107, 107, 0.15),
                 var(--shadow-accent),
-                inset 0 2px 0 0 rgba(255, 255, 255, 0.6);
+                inset 0 2px 0 0 rgba(255, 255, 255, 0.7);
+        }
+
+        body.theme-modern .project-card:hover .project-icon {
+            color: var(--accent-color);
         }
 
         .project-icon {
@@ -356,7 +322,7 @@
 
         body.theme-modern .project-icon {
             opacity: 0.9;
-            color: #6366F1;
+            color: #666666;
         }
 
         .project-card:hover .project-icon {
@@ -373,18 +339,17 @@
             color: var(--accent-color);
         }
 
+        /* Profile image without border */
         .profile-image {
             background-image: url('images/avatar.png');
             background-size: cover;
             background-position: center;
-            /* border-color: var(--profile-border); -causing some issue of border*/
         }
 
         body.theme-modern .profile-image {
-            border: 4px solid rgba(255, 255, 255, 0.4);
             box-shadow:
                 0 10px 40px 0 rgba(0, 0, 0, 0.05),
-                0 0 0 1px rgba(255, 255, 255, 0.6);
+                0 0 0 1px rgba(255, 255, 255, 0.2);
         }
 
         /* Text highlights */
@@ -443,7 +408,7 @@
             }
         }
 
-        /* Theme Toggle Button */
+        /* Enhanced Theme Toggle Button with Animation */
         .theme-toggle {
             position: fixed;
             top: 2rem;
@@ -451,17 +416,18 @@
             z-index: 1000;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 50%;
-            width: 48px;
+            border-radius: 24px;
             height: 48px;
+            min-width: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body.theme-modern .theme-toggle {
@@ -474,14 +440,46 @@
             -webkit-backdrop-filter: blur(25px) saturate(120%);
         }
 
-        .theme-toggle:hover {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 0 20px var(--accent-color);
+        @media (hover: hover) {
+            .theme-toggle:hover {
+                min-width: 140px;
+                padding: 0 20px;
+                box-shadow: 0 0 20px var(--accent-color);
+            }
+
+            .theme-toggle:hover .theme-toggle-text {
+                opacity: 1;
+                margin-left: 8px;
+                max-width: 80px;
+            }
+
+            .theme-toggle:hover .theme-toggle-icon {
+                transform: rotate(180deg);
+            }
         }
 
-        .theme-toggle span {
+        .theme-toggle-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle-icon {
             color: var(--theme-icon-color);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle-text {
+            color: var(--theme-icon-color);
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            max-width: 0;
+            margin-left: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
         }
 
         /* Explorer's Wake Trail - Performance optimized */
@@ -502,9 +500,9 @@
         body.theme-modern .particle {
             width: 4px;
             height: 4px;
-            background: #6366F1;
+            background: #FF6B6B;
             opacity: 0.6;
-            box-shadow: 0 0 6px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 0 6px rgba(255, 107, 107, 0.3);
         }
 
         @keyframes particleFade {
@@ -524,14 +522,18 @@
                 animation: none;
                 opacity: 0;
             }
-            .bg-shape {
+            .glass-orb {
                 animation: none;
+                transition: none;
             }
             * {
                 animation-duration: 0.01ms !important;
                 transition-duration: 0.01ms !important;
             }
             .scroll-arrow {
+                animation: none;
+            }
+            body::after {
                 animation: none;
             }
         }
@@ -570,18 +572,21 @@
         Skip to main content
     </a>
 
-    <!-- Background shapes for light theme -->
-    <div class="bg-shape bg-shape-1"></div>
-    <div class="bg-shape bg-shape-2"></div>
-    <div class="bg-shape bg-shape-3"></div>
+    <!-- Interactive Glass Orbs for Light Theme -->
+    <div class="glass-orb glass-orb-1"></div>
+    <div class="glass-orb glass-orb-2"></div>
+    <div class="glass-orb glass-orb-3"></div>
 
-    <!-- Theme Toggle Button -->
+    <!-- Enhanced Theme Toggle Button with Dynamic Text -->
     <button class="theme-toggle"
             onclick="toggleTheme()"
             aria-label="Switch to light theme"
             aria-pressed="false"
             role="switch">
-        <span class="material-symbols-outlined">palette</span>
+        <div class="theme-toggle-content">
+            <span class="material-symbols-outlined theme-toggle-icon">palette</span>
+            <span class="theme-toggle-text" id="theme-toggle-text">Light Mode</span>
+        </div>
     </button>
 
     <!-- Main Container -->
@@ -591,9 +596,9 @@
         <section class="hero-section">
             <header class="flex flex-col md:flex-row items-center justify-center gap-12 text-center md:text-left relative px-6">
                 <div class="relative">
-                    <div class="profile-image size-48 md:size-52 rounded-full bg-[#2a2a2a] border-4 shadow-2xl"></div>
+                    <div class="profile-image size-48 md:size-52 rounded-full bg-[#2a2a2a] shadow-2xl"></div>
                 </div>
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-6">
                     <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter">Anirudh Gupta</h1>
                     <p class="text-2xl md:text-3xl lg:text-4xl accent-text font-['Playfair_Display'] italic">Digital Explorer.</p>
                     <p class="text-base md:text-lg lg:text-xl max-w-xl mt-3 font-light">
@@ -674,6 +679,7 @@
                             </p>
                         </div>
                     </section>
+
                 </div>
             </div>
         </main>
@@ -694,8 +700,31 @@
         const PARTICLE_MAX_DISTANCE = 50;
 
         // Cache DOM queries
-        const bgShapes = document.querySelectorAll('.bg-shape');
+        const glassOrbs = document.querySelectorAll('.glass-orb');
         const themeToggle = document.querySelector('.theme-toggle');
+        const themeToggleText = document.getElementById('theme-toggle-text');
+
+        // Interactive orbs for light theme
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+
+        function updateOrbPositions() {
+            if (document.body.classList.contains('theme-modern')) {
+                glassOrbs.forEach((orb, index) => {
+                    const speed = (index + 1) * 0.01;
+                    const x = (mouseX - window.innerWidth / 2) * speed;
+                    const y = (mouseY - window.innerHeight / 2) * speed;
+
+                    orb.style.transform = `translate(${x}px, ${y}px)`;
+                });
+            }
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            requestAnimationFrame(updateOrbPositions);
+        });
 
         // Particle pool for performance optimization
         const particlePool = [];
@@ -715,7 +744,12 @@
             }
         }
 
-        // Theme Switcher Logic
+        // Theme Switcher Logic with Dynamic Text
+        function updateThemeToggleText(isModern) {
+            // Update the text to show what theme will be switched TO
+            themeToggleText.textContent = isModern ? 'Dark Mode' : 'Light Mode';
+        }
+
         function toggleTheme() {
             const body = document.body;
             body.classList.toggle('theme-modern');
@@ -724,14 +758,17 @@
             // Save preference
             localStorage.setItem('theme', isModern ? 'modern' : 'dark');
 
-            // Update background shapes visibility
-            bgShapes.forEach(shape => {
-                shape.style.display = isModern ? 'block' : 'none';
+            // Update orbs visibility
+            glassOrbs.forEach(orb => {
+                orb.style.display = isModern ? 'block' : 'none';
             });
 
             // Update accessibility attributes
             themeToggle.setAttribute('aria-pressed', isModern.toString());
             themeToggle.setAttribute('aria-label', `Switch to ${isModern ? 'dark' : 'light'} theme`);
+
+            // Update the toggle button text
+            updateThemeToggleText(isModern);
         }
 
         // Load saved theme preference and initialize
@@ -743,14 +780,17 @@
                 document.body.classList.add('theme-modern');
             }
 
-            // Set initial visibility of background shapes
-            bgShapes.forEach(shape => {
-                shape.style.display = isModern ? 'block' : 'none';
+            // Set initial visibility of glass orbs
+            glassOrbs.forEach(orb => {
+                orb.style.display = isModern ? 'block' : 'none';
             });
 
             // Set initial accessibility attributes
             themeToggle.setAttribute('aria-pressed', isModern.toString());
             themeToggle.setAttribute('aria-label', `Switch to ${isModern ? 'dark' : 'light'} theme`);
+
+            // Set initial toggle button text
+            updateThemeToggleText(isModern);
 
             // Remove loading state with requestAnimationFrame for smooth transition
             requestAnimationFrame(() => {
@@ -762,16 +802,12 @@
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         if (!prefersReducedMotion) {
-            let mouseX = 0, mouseY = 0;
             let lastParticleTime = 0;
 
             document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-
                 const currentTime = Date.now();
                 if (currentTime - lastParticleTime > PARTICLE_THROTTLE_MS) {
-                    createParticle(mouseX, mouseY);
+                    createParticle(e.clientX, e.clientY);
                     lastParticleTime = currentTime;
                 }
             });
@@ -809,7 +845,7 @@
                 const isModern = document.body.classList.contains('theme-modern');
 
                 if (isModern) {
-                    card.style.boxShadow = `0 12px 48px 0 rgba(0, 0, 0, 0.1), 0 0 20px ${accentColor}26, inset 0 2px 0 0 rgba(255, 255, 255, 0.6)`;
+                    card.style.boxShadow = `0 12px 48px 0 rgba(255, 107, 107, 0.15), 0 0 20px ${accentColor}26, inset 0 2px 0 0 rgba(255, 255, 255, 0.7)`;
                 } else {
                     card.style.boxShadow = `0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px ${accentColor}40`;
                 }
